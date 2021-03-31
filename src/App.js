@@ -1,6 +1,9 @@
 import { Component } from "react";
-import "./App.css";
-import Uploader from "./Home/Uploader";
+import Uploader from "./Uploader/Uploader";
+
+import "./App.sass";
+
+import logo from './strikeOutLogo.png'
 
 class App extends Component {
   state = {
@@ -8,7 +11,7 @@ class App extends Component {
   };
 
   plusOne = () => {
-    this.setState({counter: this.state.counter + 1})
+    this.setState({ counter: this.state.counter + 1 });
   };
 
   render() {
@@ -16,11 +19,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>
+        <img src={logo} alt="StrikeOut Logo" />
+        <h1>Summer Classics Card Creator</h1>
+        {/* <h1>
           Hi, {peenDog}. {this.state.counter}
-        </h1>
-        <Uploader name="test" />
-        <button onClick={this.plusOne}></button>
+        </h1> */}
+        <Uploader/>
+        {/* <button onClick={this.plusOne}></button> */}
       </div>
     );
   }
