@@ -1,13 +1,16 @@
 import { useState } from "react";
-import demoImg1 from './templateImgs/1.jpg'
-import demoImg2 from './templateImgs/2.jpg'
-import demoImg3 from './templateImgs/3.jpg'
-import demoImg4 from './templateImgs/4.jpg'
+
+import Instructions from "./Instructions";
+
+import demoImg1 from "./templateImgs/1.jpg";
+import demoImg2 from "./templateImgs/2.jpg";
+import demoImg3 from "./templateImgs/3.jpg";
+import demoImg4 from "./templateImgs/4.jpg";
 
 const Uploader = (props) => {
-  const [galleryOn, setGallery] = useState({
-    galleryOn: false,
-  });
+  const [galleryOn, setGallery] = useState(false);
+
+  const [uploadStep, setStep] = useState(0);
 
   const switchGallery = () => {
     setGallery(!galleryOn);
@@ -17,7 +20,11 @@ const Uploader = (props) => {
     document.getElementById("filetag").click();
   }
 
-  //different modes
+  function nextStep() {
+    if (uploadStep < instructions.length - 1) {
+      setStep(uploadStep + 1);
+    }
+  }
 
   let normalUploader = (
     <div>
@@ -44,17 +51,23 @@ const Uploader = (props) => {
         <img src={demoImg2} alt="StrikeOut Logo" />
         <img src={demoImg3} alt="StrikeOut Logo" />
         <img src={demoImg4} alt="StrikeOut Logo" />
-        </div>
+      </div>
       <span id="preSelect" onClick={switchGallery}>
         return to uploader
       </span>
     </div>
   );
 
+  const instructions = ["first step", "second step", "third step"];
+  const currentStep = [normalUploader, gallery];
+
   return (
     <div id="uploader">
+      <Instructions msg={instructions[uploadStep]} />
+      {currentStep[uploadStep]}
       {/* one big {props.name + 5 + peen} and ofc {bigManState} */}
-      {galleryOn ? normalUploader : gallery}
+      {/* {galleryOn ? gallery : normalUploader} */}
+      <button onClick={nextStep}>next step</button>
     </div>
   );
 };
