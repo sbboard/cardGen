@@ -4,8 +4,8 @@ import ATGALogo from "./teamLogos/2.jpg";
 
 const SelectTeam = (props) => {
   const teamList = [
-    { name: "Deviled Eggs", logo: deviledEggLogo, color: "#000" },
-    { name: "All-Time Greatest All-Stars", logo: ATGALogo, color: "#fff" },
+    { name: "Deviled Eggs", logo: deviledEggLogo, color: "#000",SpSpName:"SpSpName",SpSpDesc:"desc"},
+    { name: "All-Time Greatest All-Stars", logo: ATGALogo, color: "#fff",SpSpName:"SpSpName",SpSpDesc:"desc"},
   ];
 
   return (

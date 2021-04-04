@@ -1,11 +1,11 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-const CardImgUploader = (props) => {
+const ImgInCircle = (props) => {
 
   return(
-    "pen"
+    "another more complicated one. Probably use the same engine I built for PositionImg. Maybe a potential component?"
   )
 };
 
-export default CardImgUploader;
+export default ImgInCircle;
 

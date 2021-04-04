@@ -1,11 +1,14 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-const CardImgUploader = (props) => {
+const FunFact = (props) => {
 
   return(
-    "pen"
+    <form>
+      <label>Fun Fact</label>
+      <textarea></textarea>
+    </form>
   )
 };
 
-export default CardImgUploader;
+export default FunFact;
 
