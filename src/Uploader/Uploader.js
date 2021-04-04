@@ -18,6 +18,14 @@ const Uploader = (props) => {
     }
   }
 
+  
+
+  function prevStep() {
+    if (uploadStep !== 0) {
+      setStep(uploadStep - 1);
+    }
+  }
+
   const instructions = [
     ["Upload Player Image", "description 1"],
     ["Select Team", "description 2"],
@@ -56,6 +64,8 @@ const Uploader = (props) => {
         descrip={instructions[uploadStep][1]}
       />
       {renderOptions(uploadStep)}
+      <br></br>
+      <button onClick={prevStep}>prev step</button>
       <button onClick={nextStep}>next step</button>
     </div>
   );

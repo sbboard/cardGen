@@ -1,11 +1,7 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-const CardImgUploader = (props) => {
-
-  return(
-    "pen"
-  )
+const PositionImg = (props) => {
+  return "this one is more complicated and i'll need to spend a day on it";
 };
 
-export default CardImgUploader;
-
+export default PositionImg;
