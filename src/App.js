@@ -15,8 +15,6 @@ class App extends Component {
   };
 
   render() {
-    let peenDog = "peen";
-
     return (
       <div className="App">
         <img src={logo} alt="StrikeOut Logo" />

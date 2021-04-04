@@ -1,24 +1,16 @@
 import { useState } from "react";
-
 import Instructions from "./Instructions";
 
-import demoImg1 from "./templateImgs/1.jpg";
-import demoImg2 from "./templateImgs/2.jpg";
-import demoImg3 from "./templateImgs/3.jpg";
-import demoImg4 from "./templateImgs/4.jpg";
+import StepOne from "./CardImgUpload";
+import StepTwo from "./SelectTeam"
+import StepThree from "./PositionImg"
+import StepFour from "./PlayerStats"
+import StepFive from "./PositionImgCircle"
+import StepSix from "./Specials"
+import StepSeven from "./FunFact"
 
 const Uploader = (props) => {
-  const [galleryOn, setGallery] = useState(false);
-
   const [uploadStep, setStep] = useState(0);
-
-  const switchGallery = () => {
-    setGallery(!galleryOn);
-  };
-
-  function clickUpload(e) {
-    document.getElementById("filetag").click();
-  }
 
   function nextStep() {
     if (uploadStep < instructions.length - 1) {
@@ -26,47 +18,44 @@ const Uploader = (props) => {
     }
   }
 
-  let normalUploader = (
-    <div>
-      <div className="imgBox" onClick={clickUpload}>
-        Upload Card Portrait
-      </div>
-      <input
-        type="file"
-        id="filetag"
-        // onChange={changeImage(this)}
-        accept="image/x-png,image/gif,image/jpeg"
-      />
-      <span id="preSelect" onClick={switchGallery}>
-        or use a demo portrait
-      </span>
-    </div>
-  );
+  const instructions = [
+    ["Upload Player Image", "description 1"],
+    ["Select Team", "description 2"],
+    ["Position Image", "description 3"],
+    ["Player Stats", "description 4"],
+    ["Position Image In Circle", "description 5"],
+    ["Special Skills", "description 6"],
+    ["Fun Fact", "description 7"],
+  ];
 
-  let gallery = (
-    <div>
-      <h2>Demo Portraits:</h2>
-      <div id="demoPorts">
-        <img src={demoImg1} alt="StrikeOut Logo" />
-        <img src={demoImg2} alt="StrikeOut Logo" />
-        <img src={demoImg3} alt="StrikeOut Logo" />
-        <img src={demoImg4} alt="StrikeOut Logo" />
-      </div>
-      <span id="preSelect" onClick={switchGallery}>
-        return to uploader
-      </span>
-    </div>
-  );
-
-  const instructions = ["first step", "second step", "third step"];
-  const currentStep = [normalUploader, gallery];
+  function renderOptions(param) {
+    switch (param) {
+      case 0:
+        return <StepOne></StepOne>;
+      case 1:
+        return <StepTwo></StepTwo>;
+      case 2:
+        return <StepThree></StepThree>;
+      case 3:
+        return <StepFour></StepFour>;
+      case 4:
+        return <StepFive></StepFive>;
+      case 5:
+        return <StepSix></StepSix>;
+      case 6:
+        return <StepSeven></StepSeven>;
+      default:
+        return "foo";
+    }
+  }
 
   return (
     <div id="uploader">
-      <Instructions msg={instructions[uploadStep]} />
-      {currentStep[uploadStep]}
-      {/* one big {props.name + 5 + peen} and ofc {bigManState} */}
-      {/* {galleryOn ? gallery : normalUploader} */}
+      <Instructions
+        msg={instructions[uploadStep][0]}
+        descrip={instructions[uploadStep][1]}
+      />
+      {renderOptions(uploadStep)}
       <button onClick={nextStep}>next step</button>
     </div>
   );
