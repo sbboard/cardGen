@@ -2,12 +2,12 @@ import { useState } from "react";
 import Instructions from "./Instructions";
 
 import StepOne from "./CardImgUpload";
-import StepTwo from "./SelectTeam"
-import StepThree from "./PositionImg"
-import StepFour from "./PlayerStats"
-import StepFive from "./PositionImgCircle"
-import StepSix from "./Specials"
-import StepSeven from "./FunFact"
+import StepTwo from "./SelectTeam";
+import StepThree from "./PositionImg";
+import StepFour from "./PlayerStats";
+import StepFive from "./PositionImgCircle";
+import StepSix from "./Specials";
+import StepSeven from "./FunFact";
 
 const Uploader = (props) => {
   const [uploadStep, setStep] = useState(0);
@@ -17,8 +17,6 @@ const Uploader = (props) => {
       setStep(uploadStep + 1);
     }
   }
-
-  
 
   function prevStep() {
     if (uploadStep !== 0) {
