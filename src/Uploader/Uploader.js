@@ -10,6 +10,7 @@ import StepSix from "./Specials";
 import StepSeven from "./FunFact";
 
 const Uploader = (props) => {
+  //STEP CHANGERS
   const [uploadStep, setStep] = useState(0);
 
   function nextStep() {
@@ -24,6 +25,7 @@ const Uploader = (props) => {
     }
   }
 
+  //STEPS
   const instructions = [
     ["Upload Player Image", "description 1"],
     ["Select Team", "description 2"],
@@ -39,11 +41,16 @@ const Uploader = (props) => {
       case 0:
         return <StepOne></StepOne>;
       case 1:
-        return <StepTwo></StepTwo>;
+        return <StepTwo changeTeam={props.changeTeam}></StepTwo>;
       case 2:
         return <StepThree></StepThree>;
       case 3:
-        return <StepFour></StepFour>;
+        return (
+          <StepFour
+            changeName={props.changeName}
+            changeNumber={props.changeNumber}
+          ></StepFour>
+        );
       case 4:
         return <StepFive></StepFive>;
       case 5:
@@ -55,6 +62,27 @@ const Uploader = (props) => {
     }
   }
 
+  //BUTTONS
+  function doItForMeBTN() {
+    if (uploadStep !== 0 && uploadStep !== 2 && uploadStep !== 4) {
+      return <button>Do This Step For Me</button>;
+    }
+  }
+
+  function prevBtn() {
+    let disabled = false;
+    if (uploadStep === 0) {
+      disabled = true;
+    } else {
+      disabled = false;
+    }
+    return (
+      <button onClick={prevStep} disabled={disabled}>
+        prev step
+      </button>
+    );
+  }
+
   return (
     <div id="uploader">
       <Instructions
@@ -63,7 +91,9 @@ const Uploader = (props) => {
       />
       {renderOptions(uploadStep)}
       <br></br>
-      <button onClick={prevStep}>prev step</button>
+      {doItForMeBTN()}
+      <br></br>
+      {prevBtn()}
       <button onClick={nextStep}>next step</button>
     </div>
   );

@@ -1,16 +1,27 @@
 // import { useState } from "react";
 
 const PlayerStats = (props) => {
+  function changeName() {
+    props.changeName("ok1");
+  }
+  function changeNumber() {
+    props.changeNumber("ok2");
+  }
   return (
     <div>
       <form>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" />
+        <label htmlFor="name">Name</label>
+        <input type="text" id="name" name="name" onKeyUp={changeName} />
 
-        <label for="number">Number</label>
-        <input type="number" id="number" name="number" />
+        <label htmlFor="number">Number</label>
+        <input
+          type="number"
+          id="number"
+          name="number"
+          onChange={changeNumber}
+        />
 
-        <label for="lname">Position</label>
+        <label htmlFor="lname">Position</label>
         <select name="cars" id="cars">
           <option value="volvo">Pitcher</option>
           <option value="saab">Catcher</option>
@@ -23,7 +34,7 @@ const PlayerStats = (props) => {
           <option value="audi">Shortstop</option>
         </select>
 
-        <label for="lname">Rank</label>
+        <label htmlFor="lname">Rank</label>
         <select name="cars" id="cars">
           <option value="volvo">None</option>
           <option value="saab">Rookie</option>

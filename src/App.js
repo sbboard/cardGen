@@ -1,22 +1,26 @@
-import { Component } from "react";
+import { useState } from "react";
 import Uploader from "./Uploader/Uploader";
 
 import "./App.sass";
 
-import logo from './strikeOutLogo.png'
+import logo from "./strikeOutLogo.png";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <img src={logo} alt="StrikeOut Logo" />
-        <h1>Summer Classics Card Creator</h1>
-        <Uploader/>
-        {/* preview */}
-        {/* save */}
-      </div>
-    );
-  }
-}
+const App = () => {
+  const [playerTeam, setTeam] = useState("");
+  const [playerNumber, setNumber] = useState("");
+  const [playerName, setName] = useState("");
+  return (
+    <div className="App">
+      <img src={logo} alt="StrikeOut Logo" />
+      <h1>Summer Classics Card Creator</h1>
+      <Uploader
+        changeTeam={setTeam}
+        changeNumber={setNumber}
+        changeName={setName}
+      />
+      {playerName} #{playerNumber} on the {playerTeam}
+    </div>
+  );
+};
 
 export default App;
