@@ -20,7 +20,6 @@ const CardImgUploader = (props) => {
       <input
         type="file"
         id="filetag"
-        // onChange={changeImage(this)}
         accept="image/x-png,image/gif,image/jpeg"
       />
       <span id="preSelect" onClick={switchGallery}>
@@ -44,10 +43,7 @@ const CardImgUploader = (props) => {
     </div>
   );
 
-  return(
-    galleryOn ? gallery : normalUploader
-  )
+  return galleryOn ? gallery : normalUploader;
 };
 
 export default CardImgUploader;
-

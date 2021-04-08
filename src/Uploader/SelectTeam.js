@@ -1,33 +1,20 @@
-import React, { useRef } from "react";
-import deviledEggLogo from "./teamLogos/1.png";
-import ATGALogo from "./teamLogos/2.jpg";
+import React, { useRef, useEffect } from "react";
 
 const SelectTeam = (props) => {
+  useEffect(() => {
+    if (props.checkTeam !== "") {
+      selectRef.current.options.selectedIndex =
+        props.teamList.findIndex((item) => item.name === props.checkTeam) + 1;
+    }
+  });
+
   const selectRef = useRef(null);
 
-  const teamList = [
-    {
-      name: "Deviled Eggs",
-      logo: deviledEggLogo,
-      color: "#000",
-      SpSpName: "SpSpName",
-      SpSpDesc: "desc",
-      key: "DE",
-    },
-    {
-      name: "All-Time Greatest All-Stars",
-      logo: ATGALogo,
-      color: "#fff",
-      SpSpName: "SpSpName",
-      SpSpDesc: "desc",
-      key: "ATGAS",
-    },
-  ];
-
   function changeTeam() {
-    //console.log(selectRef.current.options.selectedIndex)
     if (selectRef.current.options.selectedIndex !== 0) {
-      props.changeTeam(teamList[selectRef.current.options.selectedIndex - 1].name);
+      props.changeTeam(
+        props.teamList[selectRef.current.options.selectedIndex - 1].name
+      );
     } else {
       props.changeTeam("");
     }
@@ -36,7 +23,7 @@ const SelectTeam = (props) => {
   return (
     <select id="pet-select" ref={selectRef} onChange={changeTeam}>
       <option value="">--Please choose an option--</option>
-      {teamList.map((item) => {
+      {props.teamList.map((item) => {
         return (
           <option value={item.key} key={item.key}>
             {item.name}

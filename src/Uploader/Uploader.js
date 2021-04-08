@@ -39,9 +39,19 @@ const Uploader = (props) => {
   function renderOptions(param) {
     switch (param) {
       case 0:
-        return <StepOne></StepOne>;
+        return (
+          //card img uploader
+          <StepOne></StepOne>
+        );
       case 1:
-        return <StepTwo changeTeam={props.changeTeam}></StepTwo>;
+        return (
+          //team selector
+          <StepTwo
+            teamList={props.teamList}
+            changeTeam={props.changeTeam}
+            checkTeam={props.checkTeam}
+          ></StepTwo>
+        );
       case 2:
         return <StepThree></StepThree>;
       case 3:
@@ -83,6 +93,27 @@ const Uploader = (props) => {
     );
   }
 
+  function nextBtn() {
+    if (uploadStep === 0) {
+      return <button onClick={nextStep}>next step</button>;
+    }
+    if (uploadStep === 1) {
+      if (props.checkTeam === "") {
+        return (
+          <button onClick={nextStep} disabled={true}>
+            next step
+          </button>
+        );
+      } else {
+        return (
+          <button onClick={nextStep} disabled={false}>
+            next step
+          </button>
+        );
+      }
+    }
+  }
+
   return (
     <div id="uploader">
       <Instructions
@@ -94,7 +125,7 @@ const Uploader = (props) => {
       {doItForMeBTN()}
       <br></br>
       {prevBtn()}
-      <button onClick={nextStep}>next step</button>
+      {nextBtn()}
     </div>
   );
 };
