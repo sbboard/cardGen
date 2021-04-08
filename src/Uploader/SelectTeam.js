@@ -1,8 +1,10 @@
-//import { useState } from "react";
+import React, { useRef } from "react";
 import deviledEggLogo from "./teamLogos/1.png";
 import ATGALogo from "./teamLogos/2.jpg";
 
 const SelectTeam = (props) => {
+  const selectRef = useRef(null);
+
   const teamList = [
     {
       name: "Deviled Eggs",
@@ -23,11 +25,16 @@ const SelectTeam = (props) => {
   ];
 
   function changeTeam() {
-    props.changeTeam("test");
+    //console.log(selectRef.current.options.selectedIndex)
+    if (selectRef.current.options.selectedIndex !== 0) {
+      props.changeTeam(teamList[selectRef.current.options.selectedIndex - 1].name);
+    } else {
+      props.changeTeam("");
+    }
   }
 
   return (
-    <select id="pet-select" onChange={changeTeam}>
+    <select id="pet-select" ref={selectRef} onChange={changeTeam}>
       <option value="">--Please choose an option--</option>
       {teamList.map((item) => {
         return (
