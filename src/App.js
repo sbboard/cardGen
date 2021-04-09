@@ -27,10 +27,16 @@ const App = () => {
     },
   ];
 
+  const [playerTeam, setTeam] = useState(null);
+  const [playerNumber, setNumber] = useState(null);
+  const [playerName, setName] = useState(null);
+  const [cardImage, changeImg] = useState(null);
+  const [playerRank, changeRank] = useState(null);
+  const [playerPosition, changePosition] = useState(null);
+  const [SpSpName, setSpName] = useState("None");
+  const [SpSp, setSp] = useState("None");
+  const [funFact, setFact] = useState(null)
 
-  const [playerTeam, setTeam] = useState("");
-  const [playerNumber, setNumber] = useState("");
-  const [playerName, setName] = useState("");
   return (
     <div className="App">
       <img src={logo} alt="StrikeOut Logo" />
@@ -38,11 +44,23 @@ const App = () => {
       <Uploader
         checkTeam={playerTeam}
         teamList={teamList}
+        checkName={playerName}
+        checkNumber={playerNumber}
         changeTeam={setTeam}
         changeNumber={setNumber}
         changeName={setName}
+        checkImg={cardImage}
+        changeImg={changeImg}
+        checkPosition={playerPosition}
+        changeRank={changeRank}
+        changePosition={changePosition}
+        setSpName={setSpName}
+        setSp={setSp}
+        checkFact={funFact}
+        setFact={setFact}
       />
       {playerName} #{playerNumber} on the {playerTeam}
+      <img src={cardImage} alt="dd" />
     </div>
   );
 };

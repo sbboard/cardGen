@@ -41,7 +41,7 @@ const Uploader = (props) => {
       case 0:
         return (
           //card img uploader
-          <StepOne></StepOne>
+          <StepOne changeImg={props.changeImg}></StepOne>
         );
       case 1:
         return (
@@ -59,14 +59,18 @@ const Uploader = (props) => {
           <StepFour
             changeName={props.changeName}
             changeNumber={props.changeNumber}
+            changeRank={props.changeRank}
+            changePosition={props.changePosition}
           ></StepFour>
         );
       case 4:
         return <StepFive></StepFive>;
       case 5:
-        return <StepSix></StepSix>;
+        return (
+          <StepSix setSp={props.setSp} setSpName={props.setSpName}></StepSix>
+        );
       case 6:
-        return <StepSeven></StepSeven>;
+        return <StepSeven setFact={props.setFact}></StepSeven>;
       default:
         return "foo";
     }
@@ -94,11 +98,9 @@ const Uploader = (props) => {
   }
 
   function nextBtn() {
+    //step 1 AKA upload Pic
     if (uploadStep === 0) {
-      return <button onClick={nextStep}>next step</button>;
-    }
-    if (uploadStep === 1) {
-      if (props.checkTeam === "") {
+      if (props.checkImg === null) {
         return (
           <button onClick={nextStep} disabled={true}>
             next step
@@ -108,6 +110,66 @@ const Uploader = (props) => {
         return (
           <button onClick={nextStep} disabled={false}>
             next step
+          </button>
+        );
+      }
+    }
+    //step 2 = choose team
+    if (uploadStep === 1) {
+      if (props.checkTeam == null) {
+        return (
+          <button onClick={nextStep} disabled={true}>
+            next step
+          </button>
+        );
+      } else {
+        return (
+          <button onClick={nextStep} disabled={false}>
+            next step
+          </button>
+        );
+      }
+    }
+    //steps 3 and 5 = position images
+    //6 == Spirit Special
+    if (uploadStep === 2 || uploadStep === 4 || uploadStep === 5) {
+      return (
+        <button onClick={nextStep} disabled={false}>
+          next step
+        </button>
+      );
+    }
+    //step 4 = player staps
+    if (uploadStep === 3) {
+      if (
+        props.checkPosition == null ||
+        props.checkName == null ||
+        props.checkNumber == null
+      ) {
+        return (
+          <button onClick={nextStep} disabled={true}>
+            next step
+          </button>
+        );
+      } else {
+        return (
+          <button onClick={nextStep} disabled={false}>
+            next step
+          </button>
+        );
+      }
+    }
+    if (uploadStep === 6) {
+      if (props.checkFact == null) {
+        return (
+          <button onClick={nextStep} disabled={true}>
+            finish
+          </button>
+        );
+      } else {
+        return (
+          <button onClick={nextStep} disabled={false}>
+            finish
           </button>
         );
       }

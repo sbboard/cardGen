@@ -1,11 +1,16 @@
-// import { useState } from "react";
+import React, { useRef } from "react";
 
 const FunFact = (props) => {
+  
+  const factInput = useRef(null);
 
+  function updateFact() {
+    props.setFact(factInput.current.value)
+  }
   return(
     <form>
       <label>Fun Fact</label>
-      <textarea></textarea>
+      <textarea ref={factInput} onChange={updateFact}></textarea>
     </form>
   )
 };

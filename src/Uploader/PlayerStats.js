@@ -4,6 +4,8 @@ import React, { useRef } from "react";
 const PlayerStats = (props) => {
   const nameInput = useRef(null);
   const numberInput = useRef(null);
+  const rankInput = useRef(null);
+  const positionInput = useRef(null);
 
   function changeName() {
     props.changeName(nameInput.current.value);
@@ -11,7 +13,15 @@ const PlayerStats = (props) => {
   function changeNumber() {
     props.changeNumber(numberInput.current.value);
   }
-  
+
+  function changePosition() {
+    props.changePosition(positionInput.current.value)
+  }
+
+  function changeRank() {
+    props.changeRank(rankInput.current.value)
+  }
+
   return (
     <div>
       <form>
@@ -34,7 +44,13 @@ const PlayerStats = (props) => {
         />
 
         <label htmlFor="lname">Position</label>
-        <select name="cars" id="cars">
+        <select
+          name="cars"
+          id="cars"
+          onChange={changePosition}
+          ref={positionInput}
+        >
+          <option>-- Choose A Position --</option>
           <option>Pitcher</option>
           <option>Catcher</option>
           <option>1st Base</option>
@@ -47,7 +63,7 @@ const PlayerStats = (props) => {
         </select>
 
         <label htmlFor="lname">Rank</label>
-        <select name="cars" id="cars">
+        <select name="cars" id="cars" onChange={changeRank} ref={rankInput}>
           <option>None</option>
           <option>Rookie</option>
           <option>MVP</option>
