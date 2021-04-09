@@ -6,7 +6,8 @@ const SelectTeam = (props) => {
       selectRef.current.options.selectedIndex =
         props.teamList.findIndex((item) => item.name === props.checkTeam) + 1;
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   const selectRef = useRef(null);
 
