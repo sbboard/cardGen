@@ -61,16 +61,25 @@ const Uploader = (props) => {
             changeNumber={props.changeNumber}
             changeRank={props.changeRank}
             changePosition={props.changePosition}
+            checkName={props.checkName}
+            checkNumber={props.checkNumber}
+            checkPosition={props.checkPosition}
+            checkRank={props.checkRank}
           ></StepFour>
         );
       case 4:
         return <StepFive></StepFive>;
       case 5:
         return (
-          <StepSix setSp={props.setSp} setSpName={props.setSpName}></StepSix>
+          <StepSix
+            setSp={props.setSp}
+            setSpName={props.setSpName}
+            checkSpName={props.checkSpName}
+            checkSpSp={props.checkSpSp}
+          ></StepSix>
         );
       case 6:
-        return <StepSeven setFact={props.setFact}></StepSeven>;
+        return <StepSeven setFact={props.setFact} checkFact={props.checkFact}></StepSeven>;
       default:
         return "foo";
     }

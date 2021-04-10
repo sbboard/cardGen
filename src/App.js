@@ -58,6 +58,9 @@ const App = () => {
         setSp={setSp}
         checkFact={funFact}
         setFact={setFact}
+        checkRank={playerRank}
+        checkSpName={SpSpName}
+        checkSpSp={SpSp}
       />
       {playerName} #{playerNumber} on the {playerTeam}
       <img src={cardImage} alt="dd" />

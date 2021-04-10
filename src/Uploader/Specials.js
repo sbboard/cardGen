@@ -1,16 +1,22 @@
-// import { useState } from "react";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 const Specials = (props) => {
   const specialNameRef = useRef(null);
   const specialRef = useRef(null);
 
+  useEffect(() => {
+    specialNameRef.current.value = props.checkSpName;
+    specialRef.current.value = props.checkSpSp;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function updateName() {
-    props.setSpName(specialNameRef.current.value)
+    props.setSpName(specialNameRef.current.value);
   }
 
   function updateSpecial() {
-    props.setSp(specialRef.current.value)}
+    props.setSp(specialRef.current.value);
+  }
 
   return (
     <form>

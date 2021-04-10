@@ -1,11 +1,26 @@
-// import { useState } from "react";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 const PlayerStats = (props) => {
   const nameInput = useRef(null);
   const numberInput = useRef(null);
   const rankInput = useRef(null);
   const positionInput = useRef(null);
+
+  useEffect(() => {
+    if (props.checkName !== null) {
+      nameInput.current.value = props.checkName;
+    }
+    if (props.checkNumber !== null) {
+      numberInput.current.value = props.checkNumber;
+    }
+    if (props.checkRank !== null) {
+      rankInput.current.value = props.checkRank;
+    }
+    if (props.checkPosition !== null) {
+      positionInput.current.value = props.checkPosition;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function changeName() {
     props.changeName(nameInput.current.value);
@@ -15,11 +30,11 @@ const PlayerStats = (props) => {
   }
 
   function changePosition() {
-    props.changePosition(positionInput.current.value)
+    props.changePosition(positionInput.current.value);
   }
 
   function changeRank() {
-    props.changeRank(rankInput.current.value)
+    props.changeRank(rankInput.current.value);
   }
 
   return (
