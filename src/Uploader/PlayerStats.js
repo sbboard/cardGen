@@ -47,6 +47,7 @@ const PlayerStats = (props) => {
           id="name"
           name="name"
           onKeyUp={changeName}
+          maxLength="30"
         />
 
         <label htmlFor="number">Number</label>
