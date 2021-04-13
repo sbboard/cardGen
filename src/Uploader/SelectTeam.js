@@ -7,15 +7,13 @@ const SelectTeam = (props) => {
         props.teamList.findIndex((item) => item.name === props.checkTeam) + 1;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+  }, []);
 
   const selectRef = useRef(null);
 
   function changeTeam() {
     if (selectRef.current.options.selectedIndex !== 0) {
-      props.changeTeam(
-        props.teamList[selectRef.current.options.selectedIndex - 1].name
-      );
+      props.changeTeam(selectRef.current.options.selectedIndex - 1);
     } else {
       props.changeTeam("");
     }

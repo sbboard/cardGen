@@ -37,8 +37,6 @@ const CardImgUploader = (props) => {
       props.changeImg(e.target.result);
     };
     reader.readAsDataURL(uploadRef.current.files[0]);
-    // console.log(uploadRef)
-    // //console.log(uploadRef.current.files[0])
   }
 
   let normalUploader = (

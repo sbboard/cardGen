@@ -19,6 +19,10 @@ const Uploader = (props) => {
     }
   }
 
+  function finishCard(){
+    props.finishCard(true)
+  }
+
   function prevStep() {
     if (uploadStep !== 0) {
       setStep(uploadStep - 1);
@@ -171,13 +175,13 @@ const Uploader = (props) => {
     if (uploadStep === 6) {
       if (props.checkFact == null) {
         return (
-          <button onClick={nextStep} disabled={true}>
+          <button onClick={finishCard} disabled={true}>
             finish
           </button>
         );
       } else {
         return (
-          <button onClick={nextStep} disabled={false}>
+          <button onClick={finishCard} disabled={false}>
             finish
           </button>
         );
