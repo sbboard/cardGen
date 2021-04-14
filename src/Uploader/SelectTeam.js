@@ -19,17 +19,26 @@ const SelectTeam = (props) => {
     }
   }
 
+  function doItForMe() {
+    selectRef.current.options.selectedIndex =
+      Math.floor(Math.random() * props.teamList.length) + 1;
+    props.changeTeam(selectRef.current.options.selectedIndex - 1);
+  }
+
   return (
-    <select id="pet-select" ref={selectRef} onChange={changeTeam}>
-      <option value="">--Please choose an option--</option>
-      {props.teamList.map((item) => {
-        return (
-          <option value={item.key} key={item.key}>
-            {item.name}
-          </option>
-        );
-      })}
-    </select>
+    <div>
+      <select id="pet-select" ref={selectRef} onChange={changeTeam}>
+        <option value="">--Please choose an option--</option>
+        {props.teamList.map((item) => {
+          return (
+            <option value={item.key} key={item.key}>
+              {item.name}
+            </option>
+          );
+        })}
+      </select>
+      <button onClick={doItForMe}>Choose For Me</button>
+    </div>
   );
 };
 

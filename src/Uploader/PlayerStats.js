@@ -37,6 +37,46 @@ const PlayerStats = (props) => {
     props.changeRank(rankInput.current.value);
   }
 
+  function doItForMe() {
+    let americanNames = [
+      "Sleve McDichael",
+      "Onson Sweemey",
+      "Darryl Archideld",
+      "Anette Smorin",
+      "Rey McScriff",
+      "Glenallen Mixon",
+      "Mario McRlwain",
+      "Raul Chamgerlain",
+      "Kevin Nogilny",
+      "Toni Smehrik",
+      "Bobson Dugnutt",
+      "Willamina Dustice",
+      "Jeromy Gride",
+      "Scott Dourove",
+      "Shawna Furcotte",
+      "Dean Wesrey",
+      "Mike Truk",
+      "Dwigt Rortugal",
+      "Tim Sandaele",
+      "Karl Dandleton",
+      "Mike Sernandez",
+      "Todd Bonzalez",
+    ];
+    nameInput.current.value =
+      americanNames[Math.floor(Math.random() * americanNames.length)];
+    changeName();
+    numberInput.current.value = Math.floor(Math.random() * 300) + 1;
+    changeNumber();
+    positionInput.current.options.selectedIndex = Math.floor(
+      Math.random() * (positionInput.current.options.length - 1) + 1
+    );
+    changePosition();
+    rankInput.current.options.selectedIndex = Math.floor(
+      Math.random() * (rankInput.current.options.length - 1) + 1
+    );
+    changeRank();
+  }
+
   return (
     <div>
       <form>
@@ -85,6 +125,7 @@ const PlayerStats = (props) => {
           <option>MVP</option>
         </select>
       </form>
+      <button onClick={doItForMe}>Choose For Me</button>
     </div>
   );
 };

@@ -13,11 +13,22 @@ const FunFact = (props) => {
   function updateFact() {
     props.setFact(factInput.current.value);
   }
+
+  function doItForMe() {
+    const funfacts = ["has 9 toes", "never met his dad"];
+    factInput.current.value =
+      funfacts[Math.floor(Math.random() * funfacts.length)];
+    updateFact();
+  }
+
   return (
-    <form>
-      <label>Fun Fact</label>
-      <textarea ref={factInput} onChange={updateFact}></textarea>
-    </form>
+    <div>
+      <form>
+        <label>Fun Fact</label>
+        <textarea ref={factInput} onChange={updateFact}></textarea>
+      </form>
+      <button onClick={doItForMe}>Choose For Me</button>
+    </div>
   );
 };
 

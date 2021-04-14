@@ -89,13 +89,6 @@ const Uploader = (props) => {
     }
   }
 
-  //BUTTONS
-  function doItForMeBTN() {
-    if (uploadStep !== 0 && uploadStep !== 2 && uploadStep !== 4) {
-      return <button>Do This Step For Me</button>;
-    }
-  }
-
   function prevBtn() {
     let disabled = false;
     if (uploadStep === 0) {
@@ -196,8 +189,6 @@ const Uploader = (props) => {
         descrip={instructions[uploadStep][1]}
       />
       {renderOptions(uploadStep)}
-      <br></br>
-      {doItForMeBTN()}
       <br></br>
       {prevBtn()}
       {nextBtn()}
