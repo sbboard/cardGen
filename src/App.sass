@@ -6,7 +6,7 @@ html
   max-width: 600px
   display: block
   margin: 1em auto
-  img
+  #logo
     max-width: 75%
   h1
     font-size: 1.5em
@@ -29,3 +29,17 @@ html
     img
       max-width: 50%
       height: 300px
+#frameHolder
+  position: relative
+  cursor: grab
+  overflow: hidden
+  border: 1px solid blue
+  margin: 0 auto
+  #frame
+    position: absolute
+    width: 100%
+    height: 100%
+    z-index: 255
+    pointer-events: none
+  #uploadedImg
+    position: absolute

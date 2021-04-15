@@ -19,8 +19,8 @@ const Uploader = (props) => {
     }
   }
 
-  function finishCard(){
-    props.finishCard(true)
+  function finishCard() {
+    props.finishCard(true);
   }
 
   function prevStep() {
@@ -57,7 +57,19 @@ const Uploader = (props) => {
           ></StepTwo>
         );
       case 2:
-        return <StepThree></StepThree>;
+        return (
+          <StepThree
+            uploadedImg={props.checkImg}
+            cardWidth={props.cardWidth}
+            cardHeight={props.cardHeight}
+            changeZoom={props.changeZoom}
+            changeLeftCrop={props.changeLeftCrop}
+            changeTopCrop={props.changeTopCrop}
+            zoom={props.zoomAmt}
+            leftCrop={props.leftCrop}
+            topCrop={props.topCrop}
+          ></StepThree>
+        );
       case 3:
         return (
           <StepFour
@@ -83,7 +95,12 @@ const Uploader = (props) => {
           ></StepSix>
         );
       case 6:
-        return <StepSeven setFact={props.setFact} checkFact={props.checkFact}></StepSeven>;
+        return (
+          <StepSeven
+            setFact={props.setFact}
+            checkFact={props.checkFact}
+          ></StepSeven>
+        );
       default:
         return "foo";
     }

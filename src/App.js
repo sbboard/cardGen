@@ -9,7 +9,6 @@ import "./App.sass";
 import logo from "./strikeOutLogo.png";
 
 const App = () => {
-
   const teamList = [
     {
       name: "Deviled Eggs",
@@ -39,6 +38,11 @@ const App = () => {
   const [SpSp, setSp] = useState("None");
   const [funFact, setFact] = useState(null);
   const [checkFinish, finishCard] = useState(false);
+  const [cardWidth] = useState(625 / 1.5);
+  const [cardHeight] = useState(875 / 1.5);
+  const [zoomAmt, changeZoom] = useState(1);
+  const [leftCrop, changeLeftCrop] = useState(0);
+  const [topCrop, changeTopCrop] = useState(0);
 
   const display = function () {
     if (checkFinish) {
@@ -50,6 +54,11 @@ const App = () => {
           playerImg={cardImage}
           teamImg={teamList[playerTeam].logo}
           cardColor={teamList[playerTeam].color}
+          cardWidth={cardWidth}
+          cardHeight={cardHeight}
+          zoomAmt={zoomAmt}
+          leftCrop={leftCrop}
+          topCrop={topCrop}
         />
       );
     } else {
@@ -75,6 +84,14 @@ const App = () => {
           checkSpName={SpSpName}
           checkSpSp={SpSp}
           finishCard={finishCard}
+          cardHeight={cardHeight}
+          cardWidth={cardWidth}
+          zoomAmt={zoomAmt}
+          leftCrop={leftCrop}
+          topCrop={topCrop}
+          changeZoom={changeZoom}
+          changeLeftCrop={changeLeftCrop}
+          changeTopCrop={changeTopCrop}
         />
       );
     }
@@ -82,7 +99,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <img src={logo} alt="StrikeOut Logo" />
+      <img id="logo" src={logo} alt="StrikeOut Logo" />
       <h1>Summer Classics Card Creator</h1>
       {display()}
     </div>

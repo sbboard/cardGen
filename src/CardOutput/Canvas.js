@@ -8,31 +8,16 @@ const Canvas = (props) => {
     const ctx = canvas.getContext("2d");
     let card = canvas;
 
-    card.width = 625 / 1.5;
-    card.height = 875 / 1.5;
-    let zoom = 1;
-    let leftCrop = 0;
-    let topCrop = 0;
+    card.width = props.cardWidth;
+    card.height = props.cardHeight;
+    let zoom = props.zoomAmt;
+    let leftCrop = props.leftCrop;
+    let topCrop = props.topCrop;
 
     let startBuild = new Promise(function (resolve, reject) {
       let img = new Image();
       img.src = props.playerImg;
       img.onload = function () {
-        if (img.width < card.width || img.height < card.height) {
-          if (card.width - img.width > card.height - img.height) {
-            if (zoom < card.width / img.width) {
-              zoom = card.width / img.width;
-              leftCrop = ((img.width * zoom - card.width) / 2) * -1;
-              topCrop = ((img.height * zoom - card.height) / 2) * -1;
-            }
-          } else {
-            if (zoom < card.height / img.height) {
-              zoom = card.height / img.height;
-              leftCrop = ((img.width * zoom - card.width) / 2) * -1;
-              topCrop = ((img.height * zoom - card.height) / 2) * -1;
-            }
-          }
-        }
         ctx.drawImage(
           img,
           leftCrop,
