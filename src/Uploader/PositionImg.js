@@ -4,46 +4,45 @@ import Draggable from "react-draggable";
 const PositionImg = (props) => {
   const frameStyle = { width: props.cardWidth, height: props.cardHeight };
   const theImg = useRef(null);
+  const [baseZoom, setBase] = useState(1);
+  const [zoomInLvl, zoomIn] = useState(1);
 
   useEffect(() => {
-    //if it's smaller than the frame
     if (
-      theImg.current.width < props.cardWidth ||
-      theImg.current.height < props.cardHeight
+      props.cardWidth - theImg.current.width >
+      props.cardHeight - theImg.current.height
     ) {
-      //if the width is the shorter side
-      if (
-        props.cardWidth - theImg.current.width >
-        props.cardHeight - theImg.current.height
-      ) {
-        //adjust the zoom radio
-        if (props.zoom < props.cardWidth / theImg.current.width) {
-          //zoom in
-          props.changeZoom(props.cardWidth / theImg.current.width);
-          //then center
-          props.changeLeftCrop(
-            ((theImg.current.width * props.zoom - props.cardWidth) / 2) * -1
-          );
-          props.changeTopCrop(
-            ((theImg.current.height * props.zoom - props.cardHeight) / 2) * -1
-          );
-        }
-      } else {
-        //if the height is the shorter side
-        if (props.zoom < props.cardHeight / theImg.current.height) {
-          let newZoom = props.cardHeight / theImg.current.height;
-          props.changeZoom(newZoom);
-          //zoom in
-          theImg.current.height = theImg.current.height * newZoom;
-          props.changeLeftCrop(
-            ((theImg.current.width - props.cardWidth) / 2) * -1
-          );
-          props.changeTopCrop(
-            ((theImg.current.height - props.cardHeight) / 2) * -1
-          );
-        }
+      //adjust the zoom radio
+      if (props.zoom < props.cardWidth / theImg.current.width) {
+        let newZoom = props.cardWidth / theImg.current.width;
+        //zoom in
+        props.changeZoom(newZoom);
+        setBase(newZoom);
+        //then center
+        props.changeLeftCrop(
+          ((theImg.current.width * props.zoom - props.cardWidth) / 2) * -1
+        );
+        props.changeTopCrop(
+          ((theImg.current.height * props.zoom - props.cardHeight) / 2) * -1
+        );
+      }
+    } else {
+      //if the height is the shorter side
+      if (props.zoom < props.cardHeight / theImg.current.height) {
+        let newZoom = props.cardHeight / theImg.current.height;
+        props.changeZoom(newZoom);
+        setBase(newZoom);
+        //zoom in
+        theImg.current.height = theImg.current.height * newZoom;
+        props.changeLeftCrop(
+          ((theImg.current.width - props.cardWidth) / 2) * -1
+        );
+        props.changeTopCrop(
+          ((theImg.current.height - props.cardHeight) / 2) * -1
+        );
       }
     }
+
     changeBoundaries({
       left: props.cardWidth - theImg.current.width,
       top: props.cardHeight - theImg.current.height,
@@ -85,6 +84,8 @@ const PositionImg = (props) => {
           />
         </Draggable>
       </div>
+      <input type="range" min="1" max="10" defaultValue="1"></input>
+      <br />
       left: {props.leftCrop} top: {props.topCrop} zoom: {props.zoom}
     </div>
   );
