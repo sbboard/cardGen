@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import Draggable from "react-draggable";
 
 const PositionImg = (props) => {
   const frameStyle = { width: props.cardWidth, height: props.cardHeight };
-  const imgCoords = { left: props.leftCrop, top: props.topCrop };
   const theImg = useRef(null);
 
   useEffect(() => {
@@ -44,83 +44,46 @@ const PositionImg = (props) => {
         }
       }
     }
-    dragElement(theImg);
+    changeBoundaries({
+      left: props.cardWidth - theImg.current.width,
+      top: props.cardHeight - theImg.current.height,
+      right: 0,
+      bottom: 0,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const [boundaries, changeBoundaries] = useState({});
 
-  function dragElement(elmnt) {
-    var pos1 = 0,
-      pos2 = 0,
-      pos3 = 0,
-      pos4 = 0;
-    elmnt.current.onmousedown = dragMouseDown;
+  function handleDrag() {
+    window.event.preventDefault();
+  }
 
-    function dragMouseDown(e) {
-      e = e || window.event;
-      e.preventDefault();
-      // get the mouse cursor position at startup:
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-      document.onmouseup = closeDragElement;
-      // call a function whenever the cursor moves:
-      document.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-      e = e || window.event;
-      e.preventDefault();
-      // calculate the new cursor position:
-      pos1 = pos3 - e.clientX;
-      pos2 = pos4 - e.clientY;
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-      // set the element's new position:
-      //check top wall
-      if (props.cardHeight + (elmnt.current.offsetTop - pos2) <= 0) {
-        console.log("pee2n");
-        elmnt.current.style.top = elmnt.current.offsetTop - pos2 + "px";
-      } else {
-        elmnt.current.style.top = 0;
-      }
-      //check left & right wall
-      if (
-        elmnt.current.offsetLeft - pos2 <= 0 &&
-        elmnt.current.offsetLeft - pos2 > props.cardWidth - theImg.current.width
-      ) {
-        elmnt.current.style.left = elmnt.current.offsetLeft - pos1 + "px";
-      } else {
-        if (
-          elmnt.current.offsetLeft - pos2 <=
-          props.cardWidth - theImg.current.width
-        ) {
-          elmnt.current.style.left =
-            props.cardWidth - theImg.current.width + "px";
-        } else {
-          elmnt.current.style.left = 0;
-        }
-      }
-    }
-
-    function closeDragElement() {
-      // stop moving when mouse button is released:
-      document.onmouseup = null;
-      document.onmousemove = null;
-      props.changeLeftCrop(elmnt.current.style.left);
-      props.changeTopCrop(elmnt.current.style.top);
-    }
+  function handUp() {
+    let transform = theImg.current.style.transform;
+    let coords = transform
+      .slice(transform.indexOf("(") + 1, transform.indexOf(")"))
+      .split(",");
+    props.changeTopCrop(parseInt(parseInt(coords[1])));
+    props.changeLeftCrop(parseInt(coords[0]));
   }
 
   return (
     <div>
       <div id="frameHolder" style={frameStyle}>
         <div id="frame"></div>
-        <img
-          id="uploadedImg"
-          style={imgCoords}
-          src={props.uploadedImg}
-          alt="uploaded"
-          ref={theImg}
-        />
+        <Draggable
+          onDrag={handleDrag}
+          bounds={boundaries}
+          onStop={handUp}
+          defaultPosition={{ x: 0, y: 0 }}
+        >
+          <img
+            id="uploadedImg"
+            src={props.uploadedImg}
+            alt="uploaded"
+            ref={theImg}
+          />
+        </Draggable>
       </div>
       left: {props.leftCrop} top: {props.topCrop} zoom: {props.zoom}
     </div>
