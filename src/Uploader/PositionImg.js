@@ -10,9 +10,6 @@ const PositionImg = (props) => {
 
   useEffect(() => {
     function updateImgSize() {
-      setBaseWidth(theImg.current.width);
-      setBaseHeight(theImg.current.height);
-
       changeBoundaries({
         left: props.cardWidth - theImg.current.width,
         top: props.cardHeight - theImg.current.height,
@@ -23,6 +20,8 @@ const PositionImg = (props) => {
     let myImage = new Image();
     myImage.src = props.uploadedImg;
     myImage.onload = () => {
+      setBaseWidth(theImg.current.width);
+      setBaseHeight(theImg.current.height);
       //something in this if statement chain is killing gallery images
       if (
         theImg.current.width > props.cardWidth &&
@@ -111,10 +110,15 @@ const PositionImg = (props) => {
   const zoombar = useRef(null);
 
   function zoomTime() {
-    let zoomLvl = zoombar.current.value;
+    console.log(zoombar.current.value);
+    let zoomLvl = 1;
+    if (zoombar.current.value > 1) {
+      zoomLvl = zoombar.current.value - .5;
+    }
     props.changeZoom(baseZoom * zoomLvl);
     theImg.current.width = baseWidth * (baseZoom * zoomLvl);
     theImg.current.height = baseHeight * (baseZoom * zoomLvl);
+    //do a boundary check here
   }
 
   return (
