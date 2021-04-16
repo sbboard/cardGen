@@ -2,11 +2,12 @@ import React, { useRef, useEffect, useState } from "react";
 import Draggable from "react-draggable";
 
 const PositionImg = (props) => {
-  const frameStyle = { width: props.cardWidth, height: props.cardHeight };
+  const frameStyle = { width: props.cardWidth, height: props.cardHeight, borderRadius: props.circle ? "100%" : "inherit" };
   const theImg = useRef(null);
   const [baseZoom, setBase] = useState(1);
   const [baseWidth, setBaseWidth] = useState(null);
   const [baseHeight, setBaseHeight] = useState(null);
+  const [posChange, setPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     function updateImgSize() {
@@ -27,8 +28,6 @@ const PositionImg = (props) => {
         theImg.current.width > props.cardWidth &&
         theImg.current.height > props.cardHeight
       ) {
-        console.log(theImg.current.width);
-        console.log(theImg.current.height);
         if (
           props.cardWidth - theImg.current.width >
           props.cardHeight - theImg.current.height
@@ -104,21 +103,48 @@ const PositionImg = (props) => {
     let coords = transform
       .slice(transform.indexOf("(") + 1, transform.indexOf(")"))
       .split(",");
-    props.changeTopCrop(parseInt(parseInt(coords[1])));
+    props.changeTopCrop(parseInt(coords[1]));
     props.changeLeftCrop(parseInt(coords[0]));
+    setPos({ x: parseInt(coords[0]), y: parseInt(coords[1]) });
   }
   const zoombar = useRef(null);
+  const dragRef = useRef(null);
 
   function zoomTime() {
-    console.log(zoombar.current.value);
     let zoomLvl = 1;
+    const oldWidth = theImg.current.width;
+    const oldHeight = theImg.current.height;
     if (zoombar.current.value > 1) {
-      zoomLvl = zoombar.current.value - .5;
+      zoomLvl = zoombar.current.value - 0.5;
     }
     props.changeZoom(baseZoom * zoomLvl);
     theImg.current.width = baseWidth * (baseZoom * zoomLvl);
     theImg.current.height = baseHeight * (baseZoom * zoomLvl);
-    //do a boundary check here
+    handleDrag();
+
+    let transform = theImg.current.style.transform;
+    let coords = transform
+      .slice(transform.indexOf("(") + 1, transform.indexOf(")"))
+      .split(",");
+    let Y = parseInt(coords[1]);
+    let X = parseInt(coords[0]);
+    console.log(oldHeight);
+    console.log(theImg.current.height);
+    console.log(oldHeight - theImg.current.height);
+    if (Y - (oldHeight - theImg.current.height) * -1 > 0) {
+      Y = 0;
+    } else {
+      Y = Y - (oldHeight - theImg.current.height) * -1;
+    }
+    if (X - (oldWidth - theImg.current.width) * -1 > 0) {
+      X = 0
+    } else {
+      X = X - (oldWidth - theImg.current.width) * -1;
+    }
+
+    setPos({ x: X, y: Y });
+    props.changeTopCrop(Y);
+    props.changeLeftCrop(X);
   }
 
   return (
@@ -130,6 +156,8 @@ const PositionImg = (props) => {
           bounds={boundaries}
           onStop={handUp}
           defaultPosition={{ x: 0, y: 0 }}
+          ref={dragRef}
+          position={posChange}
         >
           <img
             id="uploadedImg"

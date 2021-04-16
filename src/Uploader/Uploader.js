@@ -5,7 +5,6 @@ import StepOne from "./CardImgUpload";
 import StepTwo from "./SelectTeam";
 import StepThree from "./PositionImg";
 import StepFour from "./PlayerStats";
-import StepFive from "./PositionImgCircle";
 import StepSix from "./Specials";
 import StepSeven from "./FunFact";
 
@@ -45,8 +44,10 @@ const Uploader = (props) => {
       case 0:
         return (
           //card img uploader
-          <StepOne changeImg={props.changeImg}
-          checkImg={props.checkImg}></StepOne>
+          <StepOne
+            changeImg={props.changeImg}
+            checkImg={props.checkImg}
+          ></StepOne>
         );
       case 1:
         return (
@@ -69,6 +70,7 @@ const Uploader = (props) => {
             zoom={props.zoomAmt}
             leftCrop={props.leftCrop}
             topCrop={props.topCrop}
+            circle={false}
           ></StepThree>
         );
       case 3:
@@ -85,7 +87,20 @@ const Uploader = (props) => {
           ></StepFour>
         );
       case 4:
-        return <StepFive></StepFive>;
+        return (
+          <StepThree
+            uploadedImg={props.checkImg}
+            cardWidth={props.cardWidth}
+            cardHeight={props.cardWidth}
+            changeZoom={props.changeCircleZoom}
+            changeLeftCrop={props.changeCircleLeftCrop}
+            changeTopCrop={props.changeCircleTopCrop}
+            zoom={props.zoomCircleAmt}
+            leftCrop={props.leftCircleCrop}
+            topCrop={props.topCircleCrop}
+            circle={true}
+          ></StepThree>
+        );
       case 5:
         return (
           <StepSix

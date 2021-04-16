@@ -44,6 +44,10 @@ const App = () => {
   const [leftCrop, changeLeftCrop] = useState(0);
   const [topCrop, changeTopCrop] = useState(0);
 
+  const [zoomCircleAmt, changeCircleZoom] = useState(1);
+  const [leftCircleCrop, changeCircleLeftCrop] = useState(0);
+  const [topCircleCrop, changeCircleTopCrop] = useState(0);
+
   const display = function () {
     if (checkFinish) {
       return (
@@ -92,6 +96,12 @@ const App = () => {
           changeZoom={changeZoom}
           changeLeftCrop={changeLeftCrop}
           changeTopCrop={changeTopCrop}
+          zoomCircleAmt={zoomCircleAmt}
+          leftCircleCrop={leftCircleCrop}
+          topCircleCrop={topCircleCrop}
+          changeCircleZoom={changeCircleZoom}
+          changeCircleLeftCrop={changeCircleLeftCrop}
+          changeCircleTopCrop={changeCircleTopCrop}
         />
       );
     }
