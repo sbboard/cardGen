@@ -14,10 +14,26 @@ const CardImgUploader = (props) => {
     <div>
       <h2>Demo Portraits:</h2>
       <div id="demoPorts">
-        <img src={demoImg1} onClick={() => sendGalleryImg(demoImg1)} alt="StrikeOut Logo" />
-        <img src={demoImg2} onClick={() => sendGalleryImg(demoImg2)} alt="StrikeOut Logo" />
-        <img src={demoImg3} onClick={() => sendGalleryImg(demoImg3)} alt="StrikeOut Logo" />
-        <img src={demoImg4} onClick={() => sendGalleryImg(demoImg4)} alt="StrikeOut Logo" />
+        <img
+          src={demoImg1}
+          onClick={() => sendGalleryImg(demoImg1)}
+          alt="StrikeOut Logo"
+        />
+        <img
+          src={demoImg2}
+          onClick={() => sendGalleryImg(demoImg2)}
+          alt="StrikeOut Logo"
+        />
+        <img
+          src={demoImg3}
+          onClick={() => sendGalleryImg(demoImg3)}
+          alt="StrikeOut Logo"
+        />
+        <img
+          src={demoImg4}
+          onClick={() => sendGalleryImg(demoImg4)}
+          alt="StrikeOut Logo"
+        />
       </div>
       <span id="preSelect" onClick={switchGallery}>
         return to uploader
@@ -26,7 +42,7 @@ const CardImgUploader = (props) => {
   );
 
   function sendGalleryImg(img) {
-    props.changeImg(img)
+    props.changeImg(img);
   }
 
   //uploader stuff
@@ -43,10 +59,12 @@ const CardImgUploader = (props) => {
     reader.readAsDataURL(uploadRef.current.files[0]);
   }
 
+  const imgThumb = <img src={props.checkImg} alt="thumbnail"></img>;
+
   let normalUploader = (
     <div>
       <div className="imgBox" onClick={clickUpload}>
-        Upload Card Portrait
+        {props.checkImg ? imgThumb : "Upload Card Portrait"}
       </div>
       <input
         type="file"

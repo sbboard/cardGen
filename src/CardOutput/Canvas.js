@@ -147,12 +147,17 @@ const Canvas = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+function reload(){
+  window.location.reload()
+}
+
   return (
     <div>
       <canvas ref={cardRef}>
         Your browser does not support the HTML5 canvas tag.
       </canvas>
       <button id="btndownload">Download Front</button>
+      <button onClick={reload}>Another</button>
     </div>
   );
 };

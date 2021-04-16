@@ -45,7 +45,8 @@ const Uploader = (props) => {
       case 0:
         return (
           //card img uploader
-          <StepOne changeImg={props.changeImg}></StepOne>
+          <StepOne changeImg={props.changeImg}
+          checkImg={props.checkImg}></StepOne>
         );
       case 1:
         return (
