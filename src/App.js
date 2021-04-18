@@ -13,18 +13,20 @@ const App = () => {
     {
       name: "Deviled Eggs",
       logo: deviledEggLogo,
-      color: "green",
+      color: "FF0000",
       SpSpName: "SpSpName",
       SpSpDesc: "desc",
       key: "DE",
+      teamType: "ws"
     },
     {
       name: "All-Time Greatest All-Stars",
       logo: ATGALogo,
-      color: "yellow",
+      color: "00FF00",
       SpSpName: "SpSpName",
       SpSpDesc: "desc",
       key: "ATGAS",
+      teamType: "as"
     },
   ];
 
@@ -43,7 +45,6 @@ const App = () => {
   const [zoomAmt, changeZoom] = useState(1);
   const [leftCrop, changeLeftCrop] = useState(0);
   const [topCrop, changeTopCrop] = useState(0);
-
   const [zoomCircleAmt, changeCircleZoom] = useState(1);
   const [leftCircleCrop, changeCircleLeftCrop] = useState(0);
   const [topCircleCrop, changeCircleTopCrop] = useState(0);

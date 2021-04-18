@@ -1,6 +1,10 @@
 import React, { useRef, useEffect } from "react";
 
 const Canvas = (props) => {
+  function invertHex(hex) {
+    return (Number(`0x1${hex}`) ^ 0xFFFFFF).toString(16).substr(1).toUpperCase()
+  }
+
   const cardRef = useRef(null);
   useEffect(() => {
     const canvas = cardRef.current;
@@ -8,8 +12,9 @@ const Canvas = (props) => {
     const ctx = canvas.getContext("2d");
     let card = canvas;
 
-    card.width = props.cardWidth;
-    card.height = props.cardHeight;
+    const borderThickness = props.cardWidth * .1;
+    card.width = props.cardWidth + borderThickness;
+    card.height = props.cardHeight + borderThickness;
     let zoom = props.zoomAmt;
     let leftCrop = props.leftCrop;
     let topCrop = props.topCrop;
@@ -20,8 +25,8 @@ const Canvas = (props) => {
       img.onload = function () {
         ctx.drawImage(
           img,
-          leftCrop,
-          topCrop,
+          leftCrop + borderThickness,
+          topCrop + borderThickness,
           img.width * zoom,
           img.height * zoom
         );
@@ -30,9 +35,8 @@ const Canvas = (props) => {
     });
 
     function topLayer() {
-      //create border
-      const borderThickness = card.width * 0.032;
-      ctx.fillStyle = props.cardColor;
+      //innerborder
+      ctx.fillStyle = '#' + props.cardColor;
       //top border
       ctx.fillRect(0, 0, card.width, borderThickness);
       //left border
@@ -52,60 +56,100 @@ const Canvas = (props) => {
         borderThickness
       );
 
+      //outerborder
+      ctx.fillStyle = "#" + invertHex(props.cardColor)
+      //top border
+      ctx.fillRect(0, 0, card.width, borderThickness * .75);
+      //left border
+      ctx.fillRect(0, 0, borderThickness / 3, card.height);
+      //right border
+      ctx.fillRect(
+        card.width  - (borderThickness - (borderThickness /3) * 2),
+        0,
+        borderThickness,
+        card.height
+      );
+      //bottom border
+      ctx.fillRect(
+        0,
+        card.height - (borderThickness * .75),
+        card.width,
+        borderThickness * 1.25
+      );
+
       //add name
-      const fontSize = card.width * 0.128;
+      const fontSize = card.width * 0.4;
       const nameText = props.playerName.toUpperCase();
-      const textWidth = card.width - fontSize * 1.3 - borderThickness * 4;
-      ctx.font = `${fontSize}px Impact`;
+      const textWidth = card.width * .6
+      // ctx.font = `${fontSize}px Impact`;
+      // ctx.fillStyle = "white";
+      // ctx.fillText(
+      //   nameText,
+      //   borderThickness * 1.75,
+      //   borderThickness + fontSize,
+      //   textWidth
+      // );
+      // ctx.strokeStyle = "black";
+      // ctx.lineWidth = 1;
+      // ctx.strokeText(
+      //   nameText,
+      //   borderThickness * 1.75,
+      //   borderThickness + fontSize,
+      //   textWidth
+      // );
+
+      //add team text
+      const descText = props.playerTeam.toUpperCase();
+      ctx.font = `italic ${fontSize / 2}px Impact`;
       ctx.fillStyle = "white";
       ctx.fillText(
-        nameText,
-        borderThickness * 1.75,
-        borderThickness + fontSize,
+        `${descText}`,
+        borderThickness - (card.width * .035),
+        borderThickness + (card.height * .075),
         textWidth
       );
       ctx.strokeStyle = "black";
       ctx.lineWidth = 1;
       ctx.strokeText(
-        nameText,
-        borderThickness * 1.75,
-        borderThickness + fontSize,
+        `${descText}`,
+        borderThickness - (card.width * .035),
+        borderThickness + (card.height * .075),
         textWidth
       );
 
-      //add description text
-      const descText = props.playerTeam.toUpperCase();
-      const posText = props.playerPosition.toUpperCase();
-      ctx.font = `${fontSize / 2}px Impact`;
+      //add year Text
+      const year = 1996
+      ctx.font = `italic ${fontSize / 5}px Impact`;
       ctx.fillStyle = "white";
       ctx.fillText(
-        `${descText} \u2022 ${posText}`,
-        borderThickness * 1.75,
-        borderThickness + fontSize * 1.5,
-        textWidth
+        `${year} LINEUP`,
+        borderThickness + (card.width * .0125),
+        borderThickness + (card.height * .13),
+        textWidth / 2
       );
       ctx.strokeStyle = "black";
-      ctx.lineWidth = 1;
+      ctx.lineWidth = .75;
       ctx.strokeText(
-        `${descText} \u2022 ${posText}`,
-        borderThickness * 1.75,
-        borderThickness + fontSize * 1.5,
-        textWidth
+        `${year} LINEUP`,
+        borderThickness + (card.width * .0125),
+        borderThickness + (card.height * .13),
+        textWidth / 2
       );
 
       //add team thumbnail
-      const thumbnailSize = fontSize * 1.3;
+      const thumbnailSize = fontSize / 1.5;
       let img = new Image();
       img.src = props.teamImg;
       img.onload = function () {
         ctx.drawImage(
           img,
-          card.width - borderThickness * 1.75 - thumbnailSize,
-          borderThickness * 1.75,
+          textWidth + borderThickness,
+          borderThickness - (card.height * .05),
           thumbnailSize,
           thumbnailSize
         );
       };
+
     }
 
     startBuild.then(topLayer);
