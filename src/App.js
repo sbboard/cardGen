@@ -14,19 +14,21 @@ const App = () => {
       name: "Deviled Eggs",
       logo: deviledEggLogo,
       color: "FF0000",
+      colorTwo: "000000",
       SpSpName: "SpSpName",
       SpSpDesc: "desc",
       key: "DE",
-      teamType: "ws"
+      teamType: "world series qualifier"
     },
     {
       name: "All-Time Greatest All-Stars",
       logo: ATGALogo,
-      color: "00FF00",
+      color: "FC9B00",
+      colorTwo: "0086DD",
       SpSpName: "SpSpName",
       SpSpDesc: "desc",
       key: "ATGAS",
-      teamType: "as"
+      teamType: "all-star team"
     },
   ];
 
@@ -59,11 +61,14 @@ const App = () => {
           playerImg={cardImage}
           teamImg={teamList[playerTeam].logo}
           cardColor={teamList[playerTeam].color}
+          seccardColor={teamList[playerTeam].colorTwo}
           cardWidth={cardWidth}
           cardHeight={cardHeight}
           zoomAmt={zoomAmt}
           leftCrop={leftCrop}
           topCrop={topCrop}
+          rank={playerRank}
+          teamtype={teamList[playerTeam].teamType.toUpperCase()}
         />
       );
     } else {
