@@ -75,15 +75,15 @@ const PlayerStats = (props) => {
     );
     changePosition();
     rankInput.current.options.selectedIndex = Math.floor(
-      Math.random() * (rankInput.current.options.length - 1) + 1
+      Math.random() * (rankInput.current.options.length)
     );
     changeRank();
   }
 
   return (
-    <div>
+    <div id="statPage">
       <form>
-        <label htmlFor="name">Name</label>
+        <label>Name:</label>
         <input
           type="text"
           ref={nameInput}
@@ -92,8 +92,8 @@ const PlayerStats = (props) => {
           onKeyUp={changeName}
           maxLength="30"
         />
-
-        <label htmlFor="number">Number</label>
+<br/>
+        <label>Number:</label>
         <input
           ref={numberInput}
           type="number"
@@ -102,11 +102,10 @@ const PlayerStats = (props) => {
           onChange={changeNumber}
           max='60'
         />
+        <br/>
 
-        <label htmlFor="lname">Position</label>
+        <label>Position: </label>
         <select
-          name="cars"
-          id="cars"
           onChange={changePosition}
           ref={positionInput}
         >
@@ -121,9 +120,10 @@ const PlayerStats = (props) => {
           <option>Right-Field</option>
           <option>Shortstop</option>
         </select>
+<br/>
 
-        <label htmlFor="lname">Rank</label>
-        <select name="cars" id="cars" onChange={changeRank} ref={rankInput}>
+        <label>Rank:</label>
+        <select onChange={changeRank} ref={rankInput}>
           <option>None</option>
           <option>Rookie</option>
           <option>MVP</option>

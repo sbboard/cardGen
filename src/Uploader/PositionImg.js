@@ -167,17 +167,15 @@ const PositionImg = (props) => {
           />
         </Draggable>
       </div>
-      <input
+      <div id="zoomBlock">
+      <span id="zoomLbl">Zoom:</span> <input
         ref={zoombar}
         onChange={zoomTime}
         type="range"
         min="1"
         max="10"
         defaultValue="1"
-      ></input>
-      <br />
-      left: {props.leftCrop} top: {props.topCrop} zoom: {props.zoom} <br />
-      base zoom: {baseZoom}
+      ></input></div>
     </div>
   );
 };

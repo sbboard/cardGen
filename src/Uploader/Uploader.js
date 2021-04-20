@@ -33,7 +33,7 @@ const Uploader = (props) => {
     ["Upload Player Image", "description 1"],
     ["Select Team", "description 2"],
     ["Position Image", "description 3"],
-    ["Player Stats", "description 4"],
+    ["Player Information", "description 4"],
     ["Position Image In Circle", "description 5"],
     ["Special Skills", "description 6"],
     ["Fun Fact", "description 7"],
@@ -189,10 +189,10 @@ const Uploader = (props) => {
         //   <button onClick={nextStep} disabled={true}>
         //     next step
         //   </button>
-      return (
-        <button onClick={finishCard} disabled={true}>
-          finish
-        </button>
+        return (
+          <button onClick={finishCard} disabled={true}>
+            finish
+          </button>
         );
       } else {
         return (
@@ -224,11 +224,13 @@ const Uploader = (props) => {
       <Instructions
         msg={instructions[uploadStep][0]}
         descrip={instructions[uploadStep][1]}
+        stepNo={uploadStep + 1}
       />
       {renderOptions(uploadStep)}
-      <br></br>
-      {prevBtn()}
-      {nextBtn()}
+      <div id="navBtns">
+        {prevBtn()}
+        {nextBtn()}
+      </div>
     </div>
   );
 };

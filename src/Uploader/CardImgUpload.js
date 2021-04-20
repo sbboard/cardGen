@@ -10,39 +10,53 @@ const CardImgUploader = (props) => {
   const switchGallery = () => {
     setGallery(!galleryOn);
   };
+  const demoOne = useRef(null);
+  const demoTwo = useRef(null);
+  const demoThree = useRef(null);
+  const demoFour = useRef(null);
+
   let gallery = (
     <div>
-      <h2>Demo Portraits:</h2>
       <div id="demoPorts">
         <img
           src={demoImg1}
-          onClick={() => sendGalleryImg(demoImg1)}
-          alt="StrikeOut Logo"
+          onClick={() => sendGalleryImg(demoOne)}
+          alt="Demo One"
+          ref={demoOne}
         />
         <img
           src={demoImg2}
-          onClick={() => sendGalleryImg(demoImg2)}
-          alt="StrikeOut Logo"
+          onClick={() => sendGalleryImg(demoTwo)}
+          alt="Demo Two"
+          ref={demoTwo}
         />
         <img
           src={demoImg3}
-          onClick={() => sendGalleryImg(demoImg3)}
-          alt="StrikeOut Logo"
+          onClick={() => sendGalleryImg(demoThree)}
+          alt="Demo Three"
+          ref={demoThree}
         />
         <img
           src={demoImg4}
-          onClick={() => sendGalleryImg(demoImg4)}
-          alt="StrikeOut Logo"
+          onClick={() => sendGalleryImg(demoFour)}
+          alt="Demo Four"
+          ref={demoFour}
         />
       </div>
-      <span id="preSelect" onClick={switchGallery}>
+      <span id="preSelect" onClick={switchGallery} style={{marginTop: '0'}}>
         return to uploader
       </span>
     </div>
   );
 
-  function sendGalleryImg(img) {
-    props.changeImg(img);
+  function sendGalleryImg(elem) {
+    demoOne.current.classList.remove("selected")
+    demoTwo.current.classList.remove("selected")
+    demoThree.current.classList.remove("selected")
+    demoFour.current.classList.remove("selected")
+    elem.current.classList.add("selected")
+    console.log(elem.current)
+    props.changeImg(elem.current.src);
   }
 
   //uploader stuff
