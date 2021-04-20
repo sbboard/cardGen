@@ -18,7 +18,7 @@ const App = () => {
       SpSpName: "SpSpName",
       SpSpDesc: "desc",
       key: "DE",
-      teamType: "world series qualifier"
+      teamType: "world series qualifiers"
     },
     {
       name: "All-Time Greatest All-Stars",
@@ -28,7 +28,7 @@ const App = () => {
       SpSpName: "SpSpName",
       SpSpDesc: "desc",
       key: "ATGAS",
-      teamType: "all-star team"
+      teamType: "all-star 40 man roster team"
     },
   ];
 
@@ -56,6 +56,7 @@ const App = () => {
       return (
         <CardOutput
           playerName={playerName}
+          playerNumber={playerNumber}
           playerPosition={playerPosition}
           playerTeam={teamList[playerTeam].name}
           playerImg={cardImage}
