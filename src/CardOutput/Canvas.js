@@ -350,7 +350,7 @@ const Canvas = (props) => {
       <canvas ref={cardRef}>
         Your browser does not support the HTML5 canvas tag.
       </canvas>
-      <button id="btndownload">Download Front</button>
+      <button id="btndownload">Download Card</button>
       <button onClick={reload}>Another</button>
     </div>
   );

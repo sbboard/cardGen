@@ -185,15 +185,19 @@ const Uploader = (props) => {
         props.checkName == null ||
         props.checkNumber == null
       ) {
-        return (
-          <button onClick={nextStep} disabled={true}>
-            next step
-          </button>
+        // return (
+        //   <button onClick={nextStep} disabled={true}>
+        //     next step
+        //   </button>
+      return (
+        <button onClick={finishCard} disabled={true}>
+          finish
+        </button>
         );
       } else {
         return (
-          <button onClick={nextStep} disabled={false}>
-            next step
+          <button onClick={finishCard} disabled={false}>
+            finish
           </button>
         );
       }
