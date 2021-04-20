@@ -26,6 +26,9 @@ const PlayerStats = (props) => {
     props.changeName(nameInput.current.value);
   }
   function changeNumber() {
+    if(numberInput.current.value > 60){
+      numberInput.current.value = 60
+    }
     props.changeNumber(numberInput.current.value);
   }
 
@@ -97,6 +100,7 @@ const PlayerStats = (props) => {
           id="number"
           name="number"
           onChange={changeNumber}
+          max='60'
         />
 
         <label htmlFor="lname">Position</label>
