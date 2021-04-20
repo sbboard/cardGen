@@ -65,7 +65,7 @@ const PlayerStats = (props) => {
     nameInput.current.value =
       americanNames[Math.floor(Math.random() * americanNames.length)];
     changeName();
-    numberInput.current.value = Math.floor(Math.random() * 300) + 1;
+    numberInput.current.value = Math.floor(Math.random() * 60) + 1;
     changeNumber();
     positionInput.current.options.selectedIndex = Math.floor(
       Math.random() * (positionInput.current.options.length - 1) + 1
