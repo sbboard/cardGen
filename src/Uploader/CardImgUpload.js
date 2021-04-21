@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
-import demoImg1 from "./templateImgs/1.jpg";
-import demoImg2 from "./templateImgs/2.jpg";
-import demoImg3 from "./templateImgs/3.jpg";
-import demoImg4 from "./templateImgs/4.jpg";
+import demoImg1 from "./templateImgs/goky.jpg";
+import demoImg2 from "./templateImgs/wario.jpg";
+import demoImg3 from "./templateImgs/sonic.jpg";
+import demoImg4 from "./templateImgs/sent.jpg";
 
 const CardImgUploader = (props) => {
   //gallery stuff

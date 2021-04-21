@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import SClogo from "./cardElements/SClogo.png";
+import SClogo from "./cardElements/sclogo.png";
 
 const Canvas = (props) => {
   function adjust(color, amount) {
@@ -256,7 +256,7 @@ const Canvas = (props) => {
       logoimg.onload = function () {
         ctx.drawImage(
           logoimg,
-          card.width - thumbnailSize / 1.3,
+          card.width - thumbnailSize / 1.5,
           card.height - thumbnailSize / 1.4,
           thumbnailSize / 1.5,
           thumbnailSize / 1.5

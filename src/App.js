@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Uploader from "./Uploader/Uploader";
 import CardOutput from "./CardOutput/Canvas";
-import deviledEggLogo from "./Uploader/teamLogos/1.png";
-import ATGALogo from "./Uploader/teamLogos/2.jpg";
+import ggLogo from "./Uploader/teamLogos/gglogo2.png";
+import bcLogo from "./Uploader/teamLogos/bcaps.png";
+import kappaLogo from "./Uploader/teamLogos/kappa.png";
+import starLogo from "./Uploader/teamLogos/starc4.png";
 
 import "./App.sass";
 
@@ -10,25 +12,55 @@ import logo from "./strikeOutLogo.png";
 
 const App = () => {
   const teamList = [
+    // {
+    //   name: "All-Time Greatest All-Stars",
+    //   logo: ATGALogo,
+    //   color: "FC9B00",
+    //   colorTwo: "0086DD",
+    //   SpSpName: "SpSpName",
+    //   SpSpDesc: "desc",
+    //   key: "ATGAS",
+    //   teamType: "all-star 40 man roster team"
+    // },
     {
-      name: "Deviled Eggs",
-      logo: deviledEggLogo,
-      color: "FF0000",
-      colorTwo: "000000",
+      name: "Bottle Caps",
+      logo: bcLogo,
+      color: "DC5368",
+      colorTwo: "5A83B4",
       SpSpName: "SpSpName",
       SpSpDesc: "desc",
-      key: "DE",
+      key: "BC",
+      teamType: "all-star 40 man roster team"
+    },
+    {
+      name: "The GG's",
+      logo: ggLogo,
+      color: "8FB328",
+      colorTwo: "3F2C8B",
+      SpSpName: "SpSpName",
+      SpSpDesc: "desc",
+      key: "GG",
       teamType: "world series qualifiers"
     },
     {
-      name: "All-Time Greatest All-Stars",
-      logo: ATGALogo,
-      color: "FC9B00",
-      colorTwo: "0086DD",
+      name: "Killer Kappas",
+      logo: kappaLogo,
+      color: "4F65A3",
+      colorTwo: "65A34D",
       SpSpName: "SpSpName",
       SpSpDesc: "desc",
-      key: "ATGAS",
-      teamType: "all-star 40 man roster team"
+      key: "KK",
+      teamType: "world series qualifiers"
+    },
+    {
+      name: "Star Children",
+      logo: starLogo,
+      color: "FFD600",
+      colorTwo: "FFB700",
+      SpSpName: "SpSpName",
+      SpSpDesc: "desc",
+      key: "SC",
+      teamType: "world series qualifiers"
     },
   ];
 
@@ -119,6 +151,7 @@ const App = () => {
       <img id="logo" src={logo} alt="StrikeOut Logo" />
       <h1>Summer Classics Card Creator</h1>
       {display()}
+      <a id="strikeLink" href="https://twitter.com/gyangufaito/status/1347286890152648704">Read StrikeOut every Wednesday!</a>
     </div>
   );
 };
