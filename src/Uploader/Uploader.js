@@ -2,7 +2,6 @@ import { useState } from "react";
 import Instructions from "./Instructions";
 
 import StepOne from "./CardImgUpload";
-import StepTwo from "./SelectTeam";
 import StepThree from "./PositionImg";
 import StepFour from "./PlayerStats";
 import StepSix from "./Specials";
@@ -31,7 +30,6 @@ const Uploader = (props) => {
   //STEPS
   const instructions = [
     ["Upload Player Image", "description 1"],
-    ["Select Team", "description 2"],
     ["Position Image", "description 3"],
     ["Player Information", "description 4"],
     ["Position Image In Circle", "description 5"],
@@ -51,15 +49,6 @@ const Uploader = (props) => {
         );
       case 1:
         return (
-          //team selector
-          <StepTwo
-            teamList={props.teamList}
-            changeTeam={props.changeTeam}
-            checkTeam={props.checkTeam}
-          ></StepTwo>
-        );
-      case 2:
-        return (
           <StepThree
             uploadedImg={props.checkImg}
             cardWidth={props.cardWidth}
@@ -73,7 +62,7 @@ const Uploader = (props) => {
             circle={false}
           ></StepThree>
         );
-      case 3:
+      case 2:
         return (
           <StepFour
             changeName={props.changeName}
@@ -84,6 +73,9 @@ const Uploader = (props) => {
             checkNumber={props.checkNumber}
             checkPosition={props.checkPosition}
             checkRank={props.checkRank}
+            teamList={props.teamList}
+            changeTeam={props.changeTeam}
+            checkTeam={props.checkTeam}
           ></StepFour>
         );
       case 4:
@@ -153,25 +145,9 @@ const Uploader = (props) => {
         );
       }
     }
-    //step 2 = choose team
-    if (uploadStep === 1) {
-      if (props.checkTeam == null) {
-        return (
-          <button onClick={nextStep} disabled={true}>
-            next step
-          </button>
-        );
-      } else {
-        return (
-          <button onClick={nextStep} disabled={false}>
-            next step
-          </button>
-        );
-      }
-    }
     //steps 3 and 5 = position images
     //6 == Spirit Special
-    if (uploadStep === 2 || uploadStep === 4 || uploadStep === 5) {
+    if (uploadStep === 1 || uploadStep === 4 || uploadStep === 5) {
       return (
         <button onClick={nextStep} disabled={false}>
           next step
@@ -179,11 +155,11 @@ const Uploader = (props) => {
       );
     }
     //step 4 = player staps
-    if (uploadStep === 3) {
+    if (uploadStep === 2) {
       if (
-        props.checkPosition == null ||
         props.checkName == null ||
-        props.checkNumber == null
+        props.checkNumber == null ||
+        props.checkTeam == null
       ) {
         // return (
         //   <button onClick={nextStep} disabled={true}>

@@ -19,15 +19,29 @@ const PlayerStats = (props) => {
     if (props.checkPosition !== null) {
       positionInput.current.value = props.checkPosition;
     }
+    if (props.checkTeam !== "") {
+      selectRef.current.options.selectedIndex =
+        props.teamList.findIndex((item) => item.name === props.checkTeam) + 1;
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const selectRef = useRef(null);
+
+  function changeTeam() {
+    if (selectRef.current.options.selectedIndex !== 0) {
+      props.changeTeam(selectRef.current.options.selectedIndex - 1);
+    } else {
+      props.changeTeam("");
+    }
+  }
 
   function changeName() {
     props.changeName(nameInput.current.value);
   }
   function changeNumber() {
-    if(numberInput.current.value > 60){
-      numberInput.current.value = 60
+    if (numberInput.current.value > 60) {
+      numberInput.current.value = 60;
     }
     props.changeNumber(numberInput.current.value);
   }
@@ -75,9 +89,12 @@ const PlayerStats = (props) => {
     );
     changePosition();
     rankInput.current.options.selectedIndex = Math.floor(
-      Math.random() * (rankInput.current.options.length)
+      Math.random() * rankInput.current.options.length
     );
     changeRank();
+    selectRef.current.options.selectedIndex =
+      Math.floor(Math.random() * props.teamList.length) + 1;
+    props.changeTeam(selectRef.current.options.selectedIndex - 1);
   }
 
   return (
@@ -92,7 +109,19 @@ const PlayerStats = (props) => {
           onKeyUp={changeName}
           maxLength="30"
         />
-<br/>
+        <br />
+        <label>Team:</label>
+        <select id="pet-select" ref={selectRef} onChange={changeTeam}>
+          <option value="">--Please choose an option--</option>
+          {props.teamList.map((item) => {
+            return (
+              <option value={item.key} key={item.key}>
+                {item.name}
+              </option>
+            );
+          })}
+        </select>
+        <br />
         <label>Number:</label>
         <input
           ref={numberInput}
@@ -100,15 +129,12 @@ const PlayerStats = (props) => {
           id="number"
           name="number"
           onChange={changeNumber}
-          max='60'
+          max="60"
         />
-        <br/>
+        <br />
 
         <label>Position: </label>
-        <select
-          onChange={changePosition}
-          ref={positionInput}
-        >
+        <select onChange={changePosition} ref={positionInput}>
           <option>-- Choose A Position --</option>
           <option>Pitcher</option>
           <option>Catcher</option>
@@ -120,7 +146,7 @@ const PlayerStats = (props) => {
           <option>Right-Field</option>
           <option>Shortstop</option>
         </select>
-<br/>
+        <br />
 
         <label>Rank:</label>
         <select onChange={changeRank} ref={rankInput}>

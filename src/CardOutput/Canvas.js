@@ -107,8 +107,10 @@ const Canvas = (props) => {
       ctx.fillStyle = adjust("#" + props.cardColor, 200);
       ctx.fillText(
         props.teamtype,
-        (card.height - (card.height - ctx.measureText(props.teamtype).width) /2) * -1,
-        card.width * .955,
+        (card.height -
+          (card.height - ctx.measureText(props.teamtype).width) / 2) *
+          -1,
+        card.width * 0.955,
         card.width
       );
       ctx.rotate((90 * Math.PI) / 180);
@@ -153,25 +155,25 @@ const Canvas = (props) => {
       //   );
       // }
 
-      let numberText = `${props.playerNumber}`
+      let numberText = `${props.playerNumber}`;
       ctx.font = `${fontSize / 5}px Impact`;
       ctx.fillStyle = adjust("#" + props.cardColor, 200);
       ctx.fillText(
         numberText,
-        card.width * .0375,
-        card.height * .78,
+        card.width * 0.0375,
+        card.height * 0.78,
         borderThickness / 1.75
       );
       ctx.fillText(
         numberText,
-        card.width * .0375,
-        card.height * .83,
+        card.width * 0.0375,
+        card.height * 0.83,
         borderThickness / 1.75
       );
       ctx.fillText(
         numberText,
-        card.width * .0375,
-        card.height * .88,
+        card.width * 0.0375,
+        card.height * 0.88,
         borderThickness / 1.75
       );
 
@@ -312,8 +314,10 @@ const Canvas = (props) => {
       <canvas ref={cardRef}>
         Your browser does not support the HTML5 canvas tag.
       </canvas>
-      <button id="btndownload">Download Card</button>
-      <button onClick={reload}>Start Over</button>
+      <div id="finalBtns">
+        <button id="btndownload">Download Card</button>
+        <button onClick={reload}>Start Over</button>
+      </div>
     </div>
   );
 };
