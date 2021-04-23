@@ -5,6 +5,9 @@ import ggLogo from "./Uploader/teamLogos/gglogo2.png";
 import bcLogo from "./Uploader/teamLogos/bcaps.png";
 import kappaLogo from "./Uploader/teamLogos/kappa.png";
 import starLogo from "./Uploader/teamLogos/starc4.png";
+import ninjaLogo from "./Uploader/teamLogos/RN.png";
+import heartLogo from "./Uploader/teamLogos/HR.png";
+import bellLogo from "./Uploader/teamLogos/HB.png";
 
 import "./App.sass";
 
@@ -60,6 +63,36 @@ const App = () => {
       SpSpName: "SpSpName",
       SpSpDesc: "desc",
       key: "SC",
+      teamType: "world series qualifiers"
+    },
+    {
+      name: "Metal Ninjas",
+      logo: ninjaLogo,
+      color: "54ABD5",
+      colorTwo: "80F5FF",
+      SpSpName: "SpSpName",
+      SpSpDesc: "desc",
+      key: "MN",
+      teamType: "world series qualifiers"
+    },
+    {
+      name: "Hopeless Romantics",
+      logo: heartLogo,
+      color: "FF3B6E",
+      colorTwo: "545454",
+      SpSpName: "SpSpName",
+      SpSpDesc: "desc",
+      key: "HR",
+      teamType: "all-star 40 man roster team"
+    },
+    {
+      name: "Hell's Bells",
+      logo: bellLogo,
+      color: "FFCB00",
+      colorTwo: "FF3C00",
+      SpSpName: "SpSpName",
+      SpSpDesc: "desc",
+      key: "HB",
       teamType: "world series qualifiers"
     },
   ];
