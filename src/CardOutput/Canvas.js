@@ -230,9 +230,9 @@ const Canvas = (props) => {
       img.onload = function () {
         ctx.drawImage(
           img,
-          card.width * 0.7,
+          card.width * 0.71,
           card.height * 0.01,
-          thumbnailSize + card.width * 0.085,
+          thumbnailSize + card.width * 0.05,
           thumbnailSize + card.width * 0.05
         );
       };

@@ -6,6 +6,9 @@ import ninjaLogo from "./Uploader/teamLogos/RN.png";
 import heartLogo from "./Uploader/teamLogos/HR.png";
 import bellLogo from "./Uploader/teamLogos/HB.png";
 import YJLogo from "./Uploader/teamLogos/YJ.png";
+import DSLogo from "./Uploader/teamLogos/DS.png";
+import socLogo from "./Uploader/teamLogos/liked.png";
+import missnoLogo from "./Uploader/teamLogos/missingno.png";
 
 const teamList = [
   {
@@ -86,6 +89,36 @@ const teamList = [
     SpSpName: "SpSpName",
     SpSpDesc: "desc",
     key: "YJ",
+    teamType: "world series qualifiers",
+  },
+  {
+    name: "Dynomite Stix",
+    logo: DSLogo,
+    color: "FF0018",
+    colorTwo: "FDFC00",
+    SpSpName: "SpSpName",
+    SpSpDesc: "desc",
+    key: "DYNO",
+    teamType: "world series qualifiers",
+  },
+  {
+    name: "The Influentials",
+    logo: socLogo,
+    color: "4db3ce",
+    colorTwo: "4A8AD2",
+    SpSpName: "SpSpName",
+    SpSpDesc: "desc",
+    key: "INFLU",
+    teamType: "all-star 40 man roster team",
+  },
+  {
+    name: "Missing No's",
+    logo: missnoLogo,
+    color: "EBAF88",
+    colorTwo: "C0B7C8",
+    SpSpName: "SpSpName",
+    SpSpDesc: "desc",
+    key: "MISSNO",
     teamType: "world series qualifiers",
   },
 ];
