@@ -8,6 +8,7 @@ import starLogo from "./Uploader/teamLogos/starc4.png";
 import ninjaLogo from "./Uploader/teamLogos/RN.png";
 import heartLogo from "./Uploader/teamLogos/HR.png";
 import bellLogo from "./Uploader/teamLogos/HB.png";
+import YJLogo from "./Uploader/teamLogos/YJ.png";
 
 import "./App.sass";
 
@@ -93,6 +94,16 @@ const App = () => {
       SpSpName: "SpSpName",
       SpSpDesc: "desc",
       key: "HB",
+      teamType: "world series qualifiers"
+    },
+    {
+      name: "Yellow Jackets",
+      logo: YJLogo,
+      color: "BD3FC0",
+      colorTwo: "FDFC00",
+      SpSpName: "SpSpName",
+      SpSpDesc: "desc",
+      key: "YJ",
       teamType: "world series qualifiers"
     },
   ];
