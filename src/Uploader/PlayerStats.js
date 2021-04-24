@@ -51,7 +51,11 @@ const PlayerStats = (props) => {
   }
 
   function changeRank() {
-    props.changeRank(rankInput.current.value);
+    if (rankInput.current.value === "Standard") {
+      props.changeRank(null);
+    } else {
+      props.changeRank(rankInput.current.value);
+    }
   }
 
   function doItForMe() {
@@ -79,19 +83,19 @@ const PlayerStats = (props) => {
       "Mike Sernandez",
       "Todd Bonzalez",
     ];
+    //change name
     nameInput.current.value =
       americanNames[Math.floor(Math.random() * americanNames.length)];
     changeName();
+    //change number
     numberInput.current.value = Math.floor(Math.random() * 60) + 1;
     changeNumber();
+    //change position
     positionInput.current.options.selectedIndex = Math.floor(
       Math.random() * (positionInput.current.options.length - 1) + 1
     );
     changePosition();
-    rankInput.current.options.selectedIndex = Math.floor(
-      Math.random() * rankInput.current.options.length
-    );
-    changeRank();
+    //change team
     selectRef.current.options.selectedIndex =
       Math.floor(Math.random() * props.teamList.length) + 1;
     props.changeTeam(selectRef.current.options.selectedIndex - 1);
@@ -150,7 +154,7 @@ const PlayerStats = (props) => {
 
         <label>Rank:</label>
         <select onChange={changeRank} ref={rankInput}>
-          <option>None</option>
+          <option>Standard</option>
           <option>Rookie</option>
           <option>MVP</option>
         </select>

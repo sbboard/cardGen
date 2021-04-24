@@ -157,9 +157,12 @@ const Uploader = (props) => {
     //step 4 = player staps
     if (uploadStep === 2) {
       if (
-        props.checkName == null ||
-        props.checkNumber == null ||
-        props.checkTeam == null
+        props.checkName === null ||
+        props.checkName.length < 1 ||
+        props.checkNumber === null ||
+        props.checkNumber.length < 1 ||
+        props.checkTeam === null ||
+        props.checkTeam.length < 1
       ) {
         // return (
         //   <button onClick={nextStep} disabled={true}>
