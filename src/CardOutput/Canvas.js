@@ -101,7 +101,6 @@ const Canvas = (props) => {
       );
 
       //add team status
-
       ctx.rotate((-90 * Math.PI) / 180);
       ctx.font = `${fontSize / 5}px Impact`;
       ctx.fillStyle = adjust("#" + props.cardColor, 200);
@@ -110,10 +109,36 @@ const Canvas = (props) => {
         (card.height -
           (card.height - ctx.measureText(props.teamtype).width) / 2) *
           -1,
-        card.width * 0.955,
+        card.width * 0.09,
         card.width
       );
       ctx.rotate((90 * Math.PI) / 180);
+
+      //add number
+      let numberText = `${props.playerNumber}`;
+      if(numberText < 10){
+        numberText = "0" + numberText
+      }
+      ctx.font = `${fontSize / 5}px Impact`;
+      ctx.fillStyle = adjust("#" + props.cardColor, 200);
+      ctx.fillText(
+        numberText,
+        card.width * 0.904,
+        card.height * 0.78,
+        borderThickness / 1.75
+      );
+      ctx.fillText(
+        numberText,
+        card.width * 0.904,
+        card.height * 0.83,
+        borderThickness / 1.75
+      );
+      ctx.fillText(
+        numberText,
+        card.width * 0.904,
+        card.height * 0.88,
+        borderThickness / 1.75
+      );
 
       //add rank
       // if (props.rank !== null) {
@@ -154,28 +179,6 @@ const Canvas = (props) => {
       //     card.height - card.height * 0.0125
       //   );
       // }
-
-      let numberText = `${props.playerNumber}`;
-      ctx.font = `${fontSize / 5}px Impact`;
-      ctx.fillStyle = adjust("#" + props.cardColor, 200);
-      ctx.fillText(
-        numberText,
-        card.width * 0.0375,
-        card.height * 0.78,
-        borderThickness / 1.75
-      );
-      ctx.fillText(
-        numberText,
-        card.width * 0.0375,
-        card.height * 0.83,
-        borderThickness / 1.75
-      );
-      ctx.fillText(
-        numberText,
-        card.width * 0.0375,
-        card.height * 0.88,
-        borderThickness / 1.75
-      );
 
       //add team name
       const descText = props.playerTeam.toUpperCase();
