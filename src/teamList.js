@@ -9,6 +9,10 @@ import YJLogo from "./Uploader/teamLogos/YJ.png";
 import DSLogo from "./Uploader/teamLogos/DS.png";
 import socLogo from "./Uploader/teamLogos/liked.png";
 import missnoLogo from "./Uploader/teamLogos/missingno.png";
+import darkwebLogo from "./Uploader/teamLogos/DW.png";
+import juiceLogo from "./Uploader/teamLogos/juicebox.png";
+import piratesLogo from "./Uploader/teamLogos/PIRA.png";
+import prankLogo from "./Uploader/teamLogos/PRANK.png";
 
 const teamList = [
   {
@@ -116,6 +120,46 @@ const teamList = [
     logo: missnoLogo,
     color: "EBAF88",
     colorTwo: "C0B7C8",
+    SpSpName: "SpSpName",
+    SpSpDesc: "desc",
+    key: "MISSNO",
+    teamType: "world series qualifiers",
+  },
+  {
+    name: "Pittsburgh Pirates",
+    logo: piratesLogo,
+    color: "FDB827",
+    colorTwo: "27251F",
+    SpSpName: "SpSpName",
+    SpSpDesc: "desc",
+    key: "PIRATES",
+    teamType: "all-star 40 man roster team",
+  },
+  {
+    name: "Pranksters",
+    logo: prankLogo,
+    color: "FFEA00",
+    colorTwo: "655F65",
+    SpSpName: "SpSpName",
+    SpSpDesc: "desc",
+    key: "MISSNO",
+    teamType: "world series qualifiers",
+  },
+  {
+    name: "Juice Boxes",
+    logo: juiceLogo,
+    color: "FFC000",
+    colorTwo: "8AFF30",
+    SpSpName: "SpSpName",
+    SpSpDesc: "desc",
+    key: "MISSNO",
+    teamType: "all-star 40 man roster team",
+  },
+  {
+    name: "Dark Webs",
+    logo: darkwebLogo,
+    color: "8800E8",
+    colorTwo: "9F009B",
     SpSpName: "SpSpName",
     SpSpDesc: "desc",
     key: "MISSNO",
