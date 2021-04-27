@@ -111,26 +111,22 @@ const PositionImg = (props) => {
   const dragRef = useRef(null);
 
   function zoomTime() {
-    let zoomLvl = 1;
+    let zoomLvl = zoombar.current.value - 1;
     const oldWidth = theImg.current.width;
     const oldHeight = theImg.current.height;
-    if (zoombar.current.value > 1) {
-      zoomLvl = zoombar.current.value - 0.5;
-    }
-    props.changeZoom(baseZoom * zoomLvl);
-    theImg.current.width = baseWidth * (baseZoom * zoomLvl);
-    theImg.current.height = baseHeight * (baseZoom * zoomLvl);
-    handleDrag();
 
+    let zoomPercent = baseZoom + (baseZoom * (zoomLvl/100))
+    theImg.current.width = baseWidth * (zoomPercent);
+    theImg.current.height = baseHeight * (zoomPercent);
+    props.changeZoom(zoomPercent);
+
+    handleDrag();
     let transform = theImg.current.style.transform;
     let coords = transform
       .slice(transform.indexOf("(") + 1, transform.indexOf(")"))
       .split(",");
     let Y = parseInt(coords[1]);
     let X = parseInt(coords[0]);
-    console.log(oldHeight);
-    console.log(theImg.current.height);
-    console.log(oldHeight - theImg.current.height);
     if (Y - (oldHeight - theImg.current.height) * -1 > 0) {
       Y = 0;
     } else {
@@ -173,7 +169,7 @@ const PositionImg = (props) => {
         onChange={zoomTime}
         type="range"
         min="1"
-        max="10"
+        max="500"
         defaultValue="1"
       ></input></div>
     </div>

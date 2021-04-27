@@ -32,6 +32,9 @@ const Canvas = (props) => {
     let leftCrop = props.leftCrop;
     let topCrop = props.topCrop;
 
+    ctx.font = `40px Times New Roman`;
+    ctx.fillText(`loading`, 10, 40);
+
     let startBuild = new Promise(function (resolve, reject) {
       let img = new Image();
       img.src = props.playerImg;
@@ -116,8 +119,8 @@ const Canvas = (props) => {
 
       //add number
       let numberText = `${props.playerNumber}`;
-      if(numberText < 10){
-        numberText = "0" + numberText
+      if (numberText < 10) {
+        numberText = "0" + numberText;
       }
       ctx.font = `${fontSize / 5}px Impact`;
       ctx.fillStyle = adjust("#" + props.cardColor, 200);
