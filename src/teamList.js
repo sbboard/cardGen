@@ -13,6 +13,7 @@ import darkwebLogo from "./Uploader/teamLogos/DW.png";
 import juiceLogo from "./Uploader/teamLogos/juicebox.png";
 import piratesLogo from "./Uploader/teamLogos/PIRA.png";
 import prankLogo from "./Uploader/teamLogos/PRANK.png";
+import holloLogo from "./Uploader/teamLogos/hollo.png";
 
 const teamList = [
   {
@@ -23,6 +24,16 @@ const teamList = [
     SpSpName: "SpSpName",
     SpSpDesc: "desc",
     key: "BC",
+    teamType: "all-star 40 man roster team",
+  },
+  {
+    name: "Hollow Graphics",
+    logo: holloLogo,
+    color: "EE68E5",
+    colorTwo: "6AF3EB",
+    SpSpName: "SpSpName",
+    SpSpDesc: "desc",
+    key: "HG",
     teamType: "all-star 40 man roster team",
   },
   {
