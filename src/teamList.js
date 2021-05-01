@@ -14,6 +14,7 @@ import juiceLogo from "./Uploader/teamLogos/juicebox.png";
 import piratesLogo from "./Uploader/teamLogos/PIRA.png";
 import prankLogo from "./Uploader/teamLogos/PRANK.png";
 import holloLogo from "./Uploader/teamLogos/hollo.png";
+import greaseLogo from "./Uploader/teamLogos/GMM.png";
 
 const teamList = [
   {
@@ -24,6 +25,16 @@ const teamList = [
     SpSpName: "SpSpName",
     SpSpDesc: "desc",
     key: "BC",
+    teamType: "all-star 40 man roster team",
+  },
+  {
+    name: "Grease Monkeys",
+    logo: greaseLogo,
+    color: "4740B0",
+    colorTwo: "40B092",
+    SpSpName: "SpSpName",
+    SpSpDesc: "desc",
+    key: "GM",
     teamType: "all-star 40 man roster team",
   },
   {
