@@ -15,6 +15,7 @@ import piratesLogo from "./Uploader/teamLogos/PIRA.png";
 import prankLogo from "./Uploader/teamLogos/PRANK.png";
 import holloLogo from "./Uploader/teamLogos/hollo.png";
 import greaseLogo from "./Uploader/teamLogos/GMM.png";
+import copycatlogo from "./Uploader/teamLogos/cckill.png";
 
 const teamList = [
   {
@@ -26,6 +27,16 @@ const teamList = [
     SpSpDesc: "desc",
     key: "BC",
     teamType: "all-star 40 man roster team",
+  },
+  {
+    name: "Copycat Killers",
+    logo: copycatlogo,
+    color: "FF89F4",
+    colorTwo: "5E5AFF",
+    SpSpName: "SpSpName",
+    SpSpDesc: "desc",
+    key: "CCK",
+    teamType: "world series qualifiers",
   },
   {
     name: "Grease Monkeys",
