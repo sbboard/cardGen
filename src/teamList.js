@@ -16,6 +16,7 @@ import prankLogo from "./Uploader/teamLogos/PRANK.png";
 import holloLogo from "./Uploader/teamLogos/hollo.png";
 import greaseLogo from "./Uploader/teamLogos/GMM.png";
 import copycatlogo from "./Uploader/teamLogos/cckill.png";
+import hellcatlogo from "./Uploader/teamLogos/starst.png";
 
 const teamList = [
   {
@@ -23,6 +24,16 @@ const teamList = [
     logo: bcLogo,
     color: "DC5368",
     colorTwo: "5A83B4",
+    SpSpName: "SpSpName",
+    SpSpDesc: "desc",
+    key: "BC",
+    teamType: "all-star 40 man roster team",
+  },
+  {
+    name: "M18 Hellcats",
+    logo: hellcatlogo,
+    color: "00C166",
+    colorTwo: "FFD053",
     SpSpName: "SpSpName",
     SpSpDesc: "desc",
     key: "BC",
